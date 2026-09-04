@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tableau de Bord PC & Satisfactory Dashboard</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+  :root {
+    --bg: #eef1f4; --surface: #ffffff; --text: #263544; --text-muted: #67788a;
+    --accent: #2980b9; --accent-2: #d35400; --border: #dfe4e9;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #0a0f1a; --surface: #101a2c; --text: #dbe6ee; --text-muted: #8ea0b3;
+      --accent: #38bdf8; --accent-2: #fbbf24; --border: rgba(255,255,255,0.10);
+    }
+  }
+  * { box-sizing: border-box; }
+  body { font-family: 'Public Sans', 'Segoe UI', Arial, sans-serif; background: var(--bg); color: var(--text); margin: 0; padding: 40px 20px 80px; }
+  .wrap { max-width: 720px; margin: 0 auto; }
+  h1 { font-family: 'Rajdhani', sans-serif; font-weight: 700; text-align: center; font-size: 2em; margin-bottom: 4px; }
+  p.sub { text-align: center; color: var(--text-muted); margin-top: 0; margin-bottom: 40px; }
+  .cards { display: flex; flex-direction: column; gap: 20px; }
+  a.card { display: block; background: var(--surface); border: 1px solid var(--border); border-left: 6px solid var(--accent); border-radius: 12px; padding: 22px 26px; text-decoration: none; color: var(--text); box-shadow: 0 2px 12px rgba(0,0,0,0.06); transition: transform .15s ease; }
+  a.card:hover { transform: translateY(-2px); }
+  a.card:nth-child(2) { border-left-color: var(--accent-2); }
+  a.card h2 { font-family: 'Rajdhani', sans-serif; margin: 0 0 6px; color: var(--accent); font-size: 1.3em; }
+  a.card:nth-child(2) h2 { color: var(--accent-2); }
+  a.card p { margin: 0; color: var(--text-muted); font-size: 0.95em; }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>🖥️ Tableau de Bord PC & Satisfactory Dashboard</h1>
+    <p class="sub">Deux projets personnels de Yoann</p>
+    <div class="cards">
+      <a class="card" href="presentation-technique.html">
+        <h2>Présentation Technique</h2>
+        <p>Version détaillée : architecture, stack, APIs, algorithmique. Pour un lecteur technique.</p>
+      </a>
+      <a class="card" href="presentation-simplifiee.html">
+        <h2>Présentation Simplifiée</h2>
+        <p>Version sans jargon, pour découvrir les deux projets en langage simple.</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
