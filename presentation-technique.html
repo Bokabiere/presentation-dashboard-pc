@@ -168,17 +168,18 @@
   <div class="stat-pill"><strong>1</strong>Moteur de clonage vocal (RVC)</div>
   <div class="stat-pill"><strong>13</strong>Animations 3D du Nain</div>
   <div class="stat-pill"><strong>2</strong>Applications sœurs intégrées</div>
+  <div class="stat-pill"><strong>1</strong>Hologramme Fantôme Pepper</div>
 </div>
 
 <div class="archive-note">
-  📌 <strong>Note de version :</strong> ce document remplace et complète <code>Presentation_Complete_V21.html</code>. Le projet a considérablement grandi depuis : le Tableau de bord est passé de 7 à 11 onglets, l'assistant IA dispose désormais d'un second persona (JARVIS) et d'un véritable moteur de clonage vocal, et deux nouveaux modules matériels (Impression 3D, Mixeur Audio) ont rejoint le HUD.
+  📌 <strong>Note de version :</strong> ce document remplace et complète <code>Presentation_Complete_V21.html</code>. Le projet a considérablement grandi depuis : le Tableau de bord est passé de 7 à 11 onglets, l'assistant IA dispose désormais d'un second persona (JARVIS) et d'un véritable moteur de clonage vocal, deux nouveaux modules matériels (Impression 3D, Mixeur Audio) ont rejoint le HUD, et le Nain peut désormais se projeter physiquement hors de l'écran via un module d'illusion d'optique "Fantôme de Pepper".
 </div>
 
 <div class="toc">
   <h2>Sommaire Interactif</h2>
   <ul>
     <li><a href="#projet1">1. Tableau de bord PC — Architecture Bas-Niveau</a></li>
-    <li><a href="#avatar">2. ⭐ IA Phare : Le Nain & JARVIS (Voix clonée)</a></li>
+    <li><a href="#avatar">2. ⭐ IA Phare : Le Nain & JARVIS (Voix clonée + Hologramme)</a></li>
     <li><a href="#onglets">3. Détail Technique (11 Onglets & Paramètres)</a></li>
     <li><a href="#onglet-accueil">&nbsp;&nbsp;3.1 Accueil & Domotique</a></li>
     <li><a href="#onglet-courbes">&nbsp;&nbsp;3.2 Courbes & Matériel</a></li>
@@ -210,7 +211,7 @@
 </div>
 
 <div class="card avatar-card" id="avatar">
-  <h2>2. ⭐ Fonctionnalité Phare : Le Nain & JARVIS <span class="badge badge-new">Clonage Vocal</span></h2>
+  <h2>2. ⭐ Fonctionnalité Phare : Le Nain & JARVIS <span class="badge badge-new">Clonage Vocal</span> <span class="badge badge-new">Hologramme</span></h2>
   <p>Le projet intègre une véritable <strong>mascotte 3D interactive connectée à l'API Google Gemini</strong>, déclinée en <strong>deux personas</strong> sélectionnables : le <em>Nain</em> (avatar 3D visible, voix bougonne) et <em>JARVIS</em> (interface HUD vocale minimaliste, sans avatar, façon assistant tactique). Les deux partagent le même cerveau IA mais avec un ton et une voix radicalement différents.</p>
 
   <ul>
@@ -220,6 +221,7 @@
     <li><strong>🎙️ Clonage Vocal par IA (Edge-TTS + RVC)</strong> : Nouveauté majeure — la réponse texte de l'IA est d'abord synthétisée par <code>edge-tts</code> (voix neuronales Microsoft <code>fr-FR-HenriNeural</code>, <code>DeniseNeural</code> ou <code>EloiseNeural</code> au choix), puis passée dans un modèle de <strong>conversion de voix (RVC — Retrieval-based Voice Conversion)</strong> entraîné spécifiquement sur la voix du personnage <em>Naheulbeuk</em>, via <code>rvc-python</code> et <code>PyTorch</code>. Le résultat : une vraie voix de "nain" grommelante, avec réglages en direct du <em>Pitch</em> (hauteur, -20 à +10) et de l'<em>Index</em> (fidélité au timbre du modèle, 0 à 1) directement depuis les paramètres.</li>
     <li><strong>Mode JARVIS (Voix + reconnaissance vocale)</strong> : Un onglet dédié propose une interaction 100% vocale via l'API navigateur <code>SpeechRecognition</code> (reconnaissance en français), avec une orbe HUD animée et un historique de conversation. La commande vocale est transcrite, envoyée à <code>/api/chat</code>, puis la réponse est vocalisée via <code>/api/tts</code> (même moteur Edge-TTS/RVC), pour une boucle vocale complète mains-libres.</li>
     <li><strong>🧦 Easter Egg vocal</strong> : À chaque réception d'un SMS ou d'une notification, le Nain s'exclame automatiquement "<em>Chaussette !</em>" via le moteur vocal — une petite signature sonore qui rend chaque alerte immédiatement reconnaissable, sans même regarder l'écran.</li>
+    <li><strong>👻 Fantôme Pepper — Hologramme physique du Nain</strong> <span class="badge badge-new">Nouveau</span> : Le Nain peut désormais quitter l'écran du Dashboard pour apparaître en 3D "flottant" à côté du PC, via la technique optique classique du <em>Fantôme de Pepper</em> (réflexion sur une pyramide/vitre inclinée posée sur un second écran ou un téléphone). Une page web autonome dédiée (<code>Avatar/ghost.html</code>, Three.js + <code>FBXLoader</code>, fond noir, sans build) recharge le même modèle et les mêmes 13 animations que l'avatar principal, et interroge en boucle (polling 1s) une route <code>/api/avatar</code> exposée par le serveur Python local pour savoir quoi afficher. Un nouveau panneau <strong>"FANTÔME PEPPER"</strong> dans les Paramètres du Dashboard principal permet de piloter cet écran à distance en un clic (<code>/api/avatar/set?anim=...</code>) : déclencher les animations <em>Parler / Marcher / S'asseoir / Penser / Taunt / Dormir</em>, ou lancer un easter egg vidéo dédié (<em>Triforce.mp4</em>) — le tout affiché en direct sur l'écran-hologramme, avec retour automatique à l'animation de conversation une fois la vidéo terminée.</li>
   </ul>
 
   <div class="image-container nain-gif">
@@ -368,6 +370,7 @@
     <ul>
         <li><strong>Mixeur Audio natif Windows</strong> : Un panneau flottant liste chaque application émettant du son et expose un curseur de volume par application, piloté côté serveur par <code>pycaw</code> et <code>comtypes</code> (interfaçage direct avec l'API Windows Core Audio / <code>IAudioSessionManager2</code>) — l'équivalent du mixeur de volume Windows, mais intégré et personnalisable dans le HUD.</li>
         <li><strong>Gestion Centralisée des Paramètres</strong> : Disposition de la grille (modèles prédéfinis, mode libre, verrouillage), profils de disposition sauvegardables, choix de la source de télémétrie, thème visuel (5 palettes dont un thème "Zelda"), activation/désactivation de chaque onglet de navigation, réglages de l'avatar IA (mode Nain/JARVIS, voix, pitch, index vocal) et réglages OctoPrint.</li>
+        <li><strong>👻 Contrôle du Fantôme Pepper</strong> <span class="badge badge-new">Nouveau</span> : Un module dédié permet de déclencher à distance, en un clic, l'animation jouée sur l'écran-hologramme externe (Parler, Marcher, S'asseoir, Penser, Taunt, Dormir, ou l'easter egg vidéo Triforce), sans quitter le panneau de Paramètres.</li>
         <li><strong>Persistance des Données</strong> : Sauvegarde instantanée des paramètres pour conserver l'état de l'application entre chaque redémarrage de la machine.</li>
     </ul>
     <div class="tab-gallery">
@@ -462,6 +465,7 @@
     <li><strong>Web Speech API (<code>SpeechRecognition</code>)</strong> : API native du navigateur utilisée pour la reconnaissance vocale française dans le mode JARVIS.</li>
     <li><strong>API OctoPrint</strong> : API REST locale du serveur OctoPrint interrogée pour l'état du job d'impression 3D, la progression, la télémétrie de l'imprimante et le pilotage de la tête d'impression.</li>
     <li><strong>Pycaw / Comtypes (Windows Core Audio)</strong> : Interfaçage direct avec l'API Windows Core Audio (<code>IAudioSessionManager2</code>) pour exposer un mixeur de volume par application dans le HUD.</li>
+    <li><strong>Route interne <code>/api/avatar</code></strong> : Petite API REST maison (polling GET/SET) qui synchronise l'état d'animation entre le Dashboard principal et la page autonome <code>Avatar/ghost.html</code> affichée sur l'écran-hologramme du Fantôme Pepper.</li>
     <li><strong>API Google Calendar</strong> : Utilisée pour synchroniser dynamiquement l'agenda personnel de l'utilisateur, en aperçu sur l'accueil comme en vue mensuelle complète avec création/édition/suppression d'événements.</li>
     <li><strong>Tuya Local API (tinytuya)</strong> : Librairie permettant de communiquer en direct sur le réseau local (IP/Local Key) avec des objets connectés. Permet d'outrepasser le Cloud Tuya pour déclencher un clignotement instantané d'une prise à la réception d'un SMS.</li>
     <li><strong>API Lanyard (Discord)</strong> : Service web permettant de récupérer le statut Discord (Présence, Jeu en cours, Activité Vocale) via WebSockets (<code>https://api.lanyard.rest</code>).</li>
