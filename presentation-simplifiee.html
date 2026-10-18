@@ -129,12 +129,12 @@
 <div class="stats-row">
   <div class="stat-pill"><strong>14</strong>écrans différents</div>
   <div class="stat-pill"><strong>1</strong>assistant qui parle</div>
-  <div class="stat-pill"><strong>4+</strong>projets réunis</div>
+  <div class="stat-pill"><strong>4</strong>grands projets réunis</div>
   <div class="stat-pill"><strong>1</strong>hologramme maison</div>
 </div>
 
 <div class="lead">
-  👋 Ce document présente, en langage simple, deux projets que Yoann a créés sur son temps libre avec l'aide d'intelligences artificielles (Gemini, Claude...). Le premier est un <strong>tableau de bord</strong> qui s'affiche en permanence sur un second écran et qui centralise plein d'informations utiles sur l'ordinateur. Le second est un <strong>compagnon pour le jeu vidéo Satisfactory</strong>, qui aide à planifier des usines gigantesques dans le jeu.
+  👋 Ce document présente, en langage simple, l'écosystème de projets que Yoann a créés sur son temps libre avec l'aide d'intelligences artificielles (Gemini, Claude...). Au cœur se trouve un <strong>Tableau de bord PC</strong> affiché en permanence sur un second écran, accompagné de plusieurs applications web spécialisées : un <strong>compagnon pour le jeu Satisfactory</strong>, un <strong>optimiseur et GPS en direct pour le jeu Aniimo</strong>, ainsi qu'un <strong>guide chronologique interactif des films et séries Marvel (MCU)</strong>.
 </div>
 
 <div class="toc">
@@ -144,7 +144,9 @@
     <li><a href="#nain">2. ⭐ Le Nain — un assistant qui vous parle</a></li>
     <li><a href="#ecrans">3. Petit tour des écrans</a></li>
     <li><a href="#satisfactory">4. Le Compagnon Satisfactory</a></li>
-    <li><a href="#fabrication">5. Comment tout ça a été fabriqué</a></li>
+    <li><a href="#aniimo">5. Aniimo — Logis Manager & GPS de donjon</a></li>
+    <li><a href="#mcu">6. Guide & Checklist Marvel (MCU)</a></li>
+    <li><a href="#fabrication">7. Comment tout ça a été fabriqué</a></li>
   </ul>
 </div>
 
@@ -326,8 +328,28 @@
   </div>
 </div>
 
-<div class="card annexe-card">
-  <h2>5. Comment tout ça a été fabriqué</h2>
+<div class="card" id="aniimo" style="border-left: 5px solid #10b981;">
+  <h2 style="color: #059669;">5. Aniimo — Logis Manager & GPS de donjon</h2>
+  <p><strong>Aniimo</strong> est un jeu de capture de créatures dans lequel on gère aussi une base (le "Logis" : fermes, vergers, mines, cuisines…) et où l'on explore des labyrinthes appelés le <em>Sanctuaire Perdu</em>. Yoann a créé une application web complète (<a href="https://bokabiere.github.io/Aniimo/" target="_blank">accessible en ligne</a>) pour aider les joueurs sur ces deux aspects :</p>
+  <ul>
+    <li><strong>Un planificateur de base ultra-malin</strong> : on place ses bâtiments sur une grille 10×10 comme dans le jeu, on indique quelles créatures (Aniimos) on possède, et l'application calcule mathématiquement <strong>qui doit travailler où</strong> pour rapporter le maximum de pièces d'or par heure.</li>
+    <li><strong>Un conseiller "Que faire maintenant ?"</strong> : l'outil analyse la progression du joueur et lui indique l'action la plus rentable à faire tout de suite (quelle graine planter, combien de temps avant le prochain niveau…).</li>
+    <li><strong>Un "GPS" qui lit l'écran du jeu en direct !</strong> Dans les labyrinthes du Sanctuaire Perdu, il est très facile de se perdre. En partageant la fenêtre du jeu avec l'application, celle-ci regarde la mini-carte en haut de l'écran, devine automatiquement dans quel labyrinthe le joueur se trouve, et affiche sa position en temps réel sur la carte complète avec le chemin vers les coffres et la sortie !</li>
+  </ul>
+</div>
+
+<div class="card" id="mcu" style="border-left: 5px solid #e23636;">
+  <h2 style="color: #e23636;">6. Guide & Checklist Marvel (MCU)</h2>
+  <p>Avec près de 60 films, séries et épisodes spéciaux sortis depuis 2008, regarder l'univers <strong>Marvel (MCU)</strong> dans le bon ordre est devenu un vrai casse-tête. Yoann a donc intégré à son tableau de bord un guide visuel interactif regroupant les <strong>58 œuvres des Phases 1 à 6</strong> :</p>
+  <ul>
+    <li><strong>Deux façons de regarder</strong> : en un clic, on bascule entre l'<em>Ordre Chronologique de l'histoire</em> (qui commence en 1942 avec Captain America) et l'<em>Ordre de Sortie au cinéma</em> (qui commence en 2008 avec Iron Man).</li>
+    <li><strong>Une checklist personnalisée avec barre de progression</strong> : chaque film ou série possède sa propre carte avec son affiche, son époque dans l'histoire et une petite note explicative sans spoiler. Il suffit de cliquer dessus pour le cocher comme "Vu" et voir sa barre de progression avancer.</li>
+    <li><strong>Des filtres rapides</strong> : on peut filtrer en un instant uniquement les films, uniquement les séries, une Phase précise, ou uniquement ce qu'il nous reste à voir.</li>
+  </ul>
+</div>
+
+<div class="card annexe-card" id="fabrication">
+  <h2>7. Comment tout ça a été fabriqué</h2>
   <p>Ces deux projets ont été conçus et développés par Yoann sur son temps libre, en s'appuyant beaucoup sur des <strong>intelligences artificielles d'aide à la programmation</strong> (notamment Google Gemini et Claude d'Anthropic), qui l'ont accompagné pour écrire le code, résoudre des problèmes techniques et même rédiger ce document de présentation.</p>
   <p>Le tout s'appuie aussi sur plusieurs services en ligne gratuits ou accessibles au grand public : la météo, la musique (Spotify), le calendrier (Google Agenda), ou encore des outils spécialisés pour créer et animer le personnage 3D du Nain.</p>
   <p style="color:#7f8c8d; font-size:0.9em;">Pour les lecteurs plus techniques, une version détaillée de cette présentation existe également, avec le détail des technologies utilisées.</p>
